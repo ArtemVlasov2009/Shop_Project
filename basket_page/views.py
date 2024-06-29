@@ -42,7 +42,7 @@ def show_basket_page():
                 else:
                     print(f"Product with ID {id_products} not found.")
         
-        if flask.request.method == 'POST':
+        if flask.request.method == 'POST' and 'send_ba' in flask.request.form:
             # Forming the text with product information
             products_info = '\n'.join([f"🛒 {product.name} (Кількість: {product.count})" for product in list_products])
             
@@ -69,7 +69,10 @@ def show_basket_page():
             chat_id = '-1002192574892_5'
             telegram_text = f'👤 Покупець: {user_name}\n✉️ Email: {user_email}\n\n🎉 Вітаємо, ви купили:\n{products_info}'
             send_telegram_message(telegram_token, chat_id, telegram_text)
+            
+            return flask.redirect('/Cart/')
         
-        return flask.render_template(template_name_or_list='basket.html', products=list_products)
+
+        return flask.render_template('basket.html', products=list_products)
     else:
-        return flask.render_template(template_name_or_list='basket.html')
+        return flask.render_template('basket.html')

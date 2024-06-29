@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Корзина окончание</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <div class="main_page2">
+        <a class="Home2" href="/Home/">Home</a>
+        <a class="Shop" href="/Shop/">Shop</a>
+        <a class="Basket" href="/Basket/">Cart</a>
+        <a class="Contacts" href="/Contacts/">Contacts</a>
+        <a class="Admin" href="/Admin/">Admin</a>
+    </div>
+
+    <h5 class="text_c">Ваші дані у обробці консультант зв’яжеться з вами для підтвердження замовлення</h5>
+    
+    <ul>
+        {% for product in products %}
+            <img src="{{ url_for('static', filename='img/iphone15.png') }}" alt="iphone 15" class="iphone15_c">
+            <li class="name_c">{{ product.name }}</li>
+            <li class="count_c">{{ product.count }}</li>
+            <li class="price_c"> {{ product.price }}грн</li>
+        {% endfor %}
+    </ul>
+    
+    <h5 class="total_price_c">Загальна вартість замовлення: {{ totalPrice }}</h5>
+    
+    {% if cancel_message %}
+    <p>{{ cancel_message }}</p>
+    {% endif %}
+    
+    <form method="post">
+        <button type="submit" name="cancel_order" class="cancel_order">відмінити замовлення</button>
+    </form>
+</body>
+</html>

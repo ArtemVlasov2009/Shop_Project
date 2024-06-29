@@ -56,7 +56,7 @@
                 <label for="request_b">Additional request:</label>
                 <textarea id="request" name="request" class="request_ba"></textarea>
                 
-                <button type="submit" class="send_ba">SEND</button>
+                <button type="submit" name="send_ba" class="send_ba">SEND</button>
             </form>
         </div>
     </div>
@@ -65,5 +65,4 @@
 <script src="{{ url_for('static', filename='js/deleteCookies.js') }}"></script>
 <script src="{{ url_for('static', filename='js/culc_products.js') }}"></script>
 <script src="{{ url_for('static', filename='js/modal_windows.js') }}"></script>
-
 {% endblock %}

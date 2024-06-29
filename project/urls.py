@@ -1,4 +1,4 @@
-import registration_page, login_page, home_page, main_page, shop_page, basket_page, admin_app
+import registration_page, login_page, home_page, main_page, shop_page, basket_page, admin_app, cart_end
 from .settings import project_log
 
 registration_page.registration.add_url_rule(rule = "/Registration/", view_func = registration_page.show_reg_page, methods = ["GET", "POST"])
@@ -23,3 +23,6 @@ project_log.register_blueprint(blueprint = basket_page.basket)
 
 admin_app.admin.add_url_rule(rule = "/Admin/", view_func = admin_app.render_admin, methods = ["GET", "POST"])
 project_log.register_blueprint(blueprint = admin_app.admin)
+
+cart_end.cart_end_app.add_url_rule(rule = "/Cart/", view_func = cart_end.show_cart_end_page, methods = ["GET", "POST"])
+project_log.register_blueprint(blueprint = cart_end.cart_end_app)
